@@ -1,6 +1,11 @@
 secret:
   key: 1222
 
+ping:
+  period: 2
+  service:
+    url: https://www.baidu.com
+
 wechat:
   cp:
     corpid:
@@ -23,6 +28,6 @@ swagger:
   contactName: crick
   contactUrl:
   contactEmail: wangyuheng@outlook.com
-  paths: /wechat/cp/.*, /mock
+  paths: /alert.*, /wechat.*
   license:
   licenseUrl:

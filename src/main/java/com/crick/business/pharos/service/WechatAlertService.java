@@ -32,7 +32,11 @@ public class WechatAlertService implements AlertService {
 
     @Override
     public void alertTextToUsers(String content, List<String> users) {
-
+        try {
+            wxCpService.messageSend(alertTextBuilder.buildForUsers(content, String.join(",", users)));
+        } catch (WxErrorException e) {
+            logger.error("alertTextToUsers error! users:{}", users, e);
+        }
     }
 
     @Override
