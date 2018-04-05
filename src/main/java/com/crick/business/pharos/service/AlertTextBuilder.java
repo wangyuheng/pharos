@@ -1,10 +1,7 @@
 package com.crick.business.pharos.service;
 
 import me.chanjar.weixin.cp.bean.WxCpMessage;
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
 
-@Component
 public class AlertTextBuilder {
 
     private Integer agentid;
