@@ -5,4 +5,4 @@
 
 
 
-![pharos_0.png](/Users/hemo/Desktop/pharos_0.png)
+![pharos_0.png](https://raw.githubusercontent.com/wangyuheng/pharos/dev/doc/pharos_0.png))
