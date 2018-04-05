@@ -18,7 +18,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/alert")
-@Api("微信接口")
+@Api("告警接口")
 public class AlertController {
 
     Logger logger = LoggerFactory.getLogger(this.getClass());

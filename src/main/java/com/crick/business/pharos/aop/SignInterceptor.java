@@ -3,7 +3,7 @@ package com.crick.business.pharos.aop;
 import com.crick.business.pharos.annotation.Anonymous;
 import com.crick.business.pharos.directory.RestfulErrorCode;
 import com.crick.business.pharos.exception.RestfulException;
-import com.crick.business.pharos.util.ShaUtil;
+import com.crick.business.pharos.util.EncryptUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -44,7 +44,7 @@ public class SignInterceptor extends HandlerInterceptorAdapter {
                     sb.append(key).append("-").append(Arrays.toString(parameters.get(key))).append("-");
                 }
                 sb.append("token").append("-").append(secretKey);
-                if (!sign.equals(ShaUtil.sha1(sb.toString()))) {
+                if (!sign.equals(EncryptUtil.sha1(sb.toString()))) {
                     throw new RestfulException("sign check fail!", RestfulErrorCode.SIGN_ERROR);
                 }
             }

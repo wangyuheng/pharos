@@ -8,9 +8,9 @@ import java.security.NoSuchAlgorithmException;
 /**
  * SHA 加密工具
  */
-public class ShaUtil {
+public class EncryptUtil {
 
-    private ShaUtil() {
+    private EncryptUtil() {
     }
 
     private static final String SHA_1_ALGORITHM = "SHA-1";
