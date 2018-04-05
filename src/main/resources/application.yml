@@ -1,0 +1,28 @@
+secret:
+  key: 1222
+
+wechat:
+  cp:
+    corpid:
+    agentid: 1000002
+    corp:
+      secret:
+
+server:
+  port: 9000
+
+white:
+  list: 172.16.13.1,127.0.0.1,0:0:0:0:0:0:0:1
+
+swagger:
+  groupName: clodenjoy
+  title: Wechat Alert
+  description: 基于微信企业号，提供服务器报警功能
+  termsOfServiceUrl:
+  version: 1.0
+  contactName: crick
+  contactUrl:
+  contactEmail: wangyuheng@outlook.com
+  paths: /wechat/cp/.*, /mock
+  license:
+  licenseUrl:
