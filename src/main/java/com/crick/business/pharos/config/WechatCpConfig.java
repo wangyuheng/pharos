@@ -7,7 +7,6 @@ import me.chanjar.weixin.cp.api.impl.WxCpTagServiceImpl;
 import me.chanjar.weixin.cp.api.impl.WxCpUserServiceImpl;
 import me.chanjar.weixin.cp.config.WxCpConfigStorage;
 import me.chanjar.weixin.cp.config.WxCpInMemoryConfigStorage;
-import me.chanjar.weixin.cp.message.WxCpMessageRouter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -54,11 +53,5 @@ public class WechatCpConfig {
         wxCpService.setUserService(new WxCpUserServiceImpl(wxCpService));
         return wxCpService;
     }
-
-//    @Bean
-//    public WxCpMessageRouter router(WxCpService WxCpService) {
-//        final WxCpMessageRouter newRouter = new WxCpMessageRouter(WxCpService);
-//        return newRouter;
-//    }
 
 }
