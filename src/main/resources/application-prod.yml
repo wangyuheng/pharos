@@ -1,0 +1,36 @@
+secret:
+  key: ${SECRET_KEY}
+
+ping:
+  period: ${PING_PERIOD}
+  service:
+    url: ${PING_SERVICE_URL}
+
+alert:
+  tag: ${ALERT_TAG}
+
+wechat:
+  cp:
+    corpid: ${WECHAT_CP_CORPID}
+    agentid: ${WECHAT_CP_AGENTID}
+    corp:
+      secret: ${WECHAT_CP_CORP_SECRET}
+
+server:
+  port: ${SERVER_PORT}
+
+white:
+  list: ${WHITE_LIST}
+
+swagger:
+  groupName: clodenjoy
+  title: Wechat Alert
+  description: 基于微信企业号，提供服务器报警功能
+  termsOfServiceUrl:
+  version: 1.0
+  contactName: crick
+  contactUrl:
+  contactEmail: wangyuheng@outlook.com
+  paths: /alert.*, /wechat.*
+  license:
+  licenseUrl:
