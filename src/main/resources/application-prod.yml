@@ -1,26 +1,26 @@
 secret:
-  key: 1222
+  key: ${SECRET_KEY}
 
 ping:
-  period: 2
+  period: ${PING_PERIOD}
   service:
-    url: https://www.baidu.com
+    url: ${PING_SERVICE_URL}
 
 alert:
-  tag: 1
+  tag: ${ALERT_TAG}
 
 wechat:
   cp:
-    corpid:
-    agentid: 1000002
+    corpid: ${WECHAT_CP_CORPID}
+    agentid: ${WECHAT_CP_AGENTID}
     corp:
-      secret:
+      secret: ${WECHAT_CP_CORP_SECRET}
 
 server:
-  port: 9000
+  port: ${SERVER_PORT}
 
 white:
-  list: 172.16.13.1,127.0.0.1,0:0:0:0:0:0:0:1
+  list: ${WHITE_LIST}
 
 swagger:
   groupName: clodenjoy
