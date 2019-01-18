@@ -6,6 +6,9 @@ ping:
   service:
     url: https://www.baidu.com
 
+alert:
+  tag: 1
+
 wechat:
   cp:
     corpid:
