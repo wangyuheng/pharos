@@ -5,9 +5,11 @@ import okhttp3.Request;
 import okhttp3.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import wang.crick.business.pharos.service.AlertService;
 
 import java.io.IOException;
 import java.util.Map;
@@ -26,6 +28,10 @@ public class PingCheckTask {
     private String serviceUrl;
     @Value("${ping.period:3}")
     private int period;
+    @Value("${alert.tag:}")
+    private String alertTag;
+    @Autowired
+    private AlertService alertService;
 
     private static Map<String, Integer> errorCalculate = new ConcurrentHashMap<>();
 
@@ -43,16 +49,22 @@ public class PingCheckTask {
         Request request = new Request.Builder()
                 .url(serviceUrl)
                 .build();
-        Response response = okHttpClient.newCall(request).execute();
-        if (response.isSuccessful()) {
-            logger.info("ping check {} success!", serviceUrl);
-            resetCount(serviceUrl);
-        } else {
-            logger.info("ping check {} fail! response:{}", serviceUrl, response);
+        try {
+            Response response = okHttpClient.newCall(request).execute();
+            if (response.isSuccessful()) {
+                logger.info("ping check {} success!", serviceUrl);
+                resetCount(serviceUrl);
+            } else {
+                throw new RuntimeException("ping service fail! status="+response.code());
+            }
+        } catch (Exception e) {
+            logger.info("ping check {} fail! ", serviceUrl, e);
             int count = pushCount(serviceUrl);
             if (count > period) {
                 // alert to admin!
+                alertService.alertTextToTag(String.format("ping %s fail over %d times!", serviceUrl, period), alertTag);
             }
         }
     }
+
 }
