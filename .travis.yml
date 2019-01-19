@@ -1,0 +1,22 @@
+language: java
+
+services:
+  - docker
+
+jdk:
+  - openjdk8
+
+install: true
+
+jobs:
+  include:
+    - stage: deploy
+      name: "build docker image"
+      if: branch = feature/docker
+      script:
+        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+        - docker tag wangyuheng/pharos:1.0.0 wangyuheng/pharos:latest
+        - docker push wangyuheng/pharos
+notifications:
+  email:
+    - wangyuheng@outlook.com
