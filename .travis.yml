@@ -6,25 +6,22 @@ services:
 jdk:
   - openjdk8
 
-env:
-  - BRANCH = feature/docker
-
 jobs:
   include:
     - stage: build
       name: "Build docker image"
-      if: branch = $BRANCH
+      if: branch = feature/docker
       script:
         - docker build -t wangyuheng/pharos .
     - stage: tag
       name: "Tag docker image"
-      if: branch = $BRANCH
+      if: branch = feature/docker
       script:
         - docker tag wangyuheng/pharos wangyuheng/pharos:1.0.0
         - docker tag wangyuheng/pharos wangyuheng/pharos:latest
     - stage: push
       name: "Push docker image"
-      if: branch = $BRANCH
+      if: branch = feature/docker
       script:
         - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
         - docker push wangyuheng/pharos
