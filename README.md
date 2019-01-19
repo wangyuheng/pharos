@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/wangyuheng/pharos.svg?branch=master)](https://travis-ci.org/wangyuheng/pharos)
+
 # pharos
 
 ![pharos_1.png](https://raw.githubusercontent.com/wangyuheng/pharos/dev/doc/pharos_1.png))
