@@ -10,7 +10,7 @@ jobs:
   include:
     - stage: docker
       name: "Build & Push docker image"
-      if: branch = feature/docker
+      if: branch = master
       script:
         - docker build -t wangyuheng/pharos .
         - docker tag wangyuheng/pharos wangyuheng/pharos:1.0.0
