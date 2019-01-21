@@ -8,13 +8,16 @@ jdk:
 
 jobs:
   include:
-    - stage: docker
-      name: "Build & Push docker image"
-      if: branch = master
+    - stage: test
+      name: "Run test cases"
+      if: tag IS blank
+      script: mvn test
+    - stage: deploy
+      name: "Build & Push docker image with tag"
+      if: tag IS present
       script:
-        - docker build -t wangyuheng/pharos .
-        - docker tag wangyuheng/pharos wangyuheng/pharos:1.0.0
-        - docker tag wangyuheng/pharos wangyuheng/pharos:latest
+        - mvn clean package -Ddocker.repository=wangyuheng -Ddocker.tag=$TRAVIS_TAG
+        - docker tag wangyuheng/pharos:$TRAVIS_TAG wangyuheng/pharos:latest
         - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
         - docker push wangyuheng/pharos
 
