@@ -1,22 +1,25 @@
 version: '3'
 services:
   pharos:
-#    build: .
     image: wangyuheng/pharos:latest
     ports:
-    - "9001:80"
+    - "9001:8080"
     restart: always
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
     environment:
-    - SERVER_PORT=80
-    - SPRING_PROFILES_ACTIVE=prod
-    - SECRET_KEY=this_is_a_simple_key
-    - PING_PERIOD=1
-    - PING_SERVICE_URL=http://www.baidu.com1
-    - ALERT_TAG=1
-    - WECHAT_CP_CORPID=企业微信标识
-    - WECHAT_CP_AGENTID=企业微信应用标识
-    - WECHAT_CP_CORP_SECRET=企业微信应用密钥
-    - WHITE_LIST=172.16.13.1,127.0.0.1,0:0:0:0:0:0:0:1
+    # https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/envvars002.html
+      JAVA_TOOL_OPTION: "-Xms2g -Xmx4g -XX:+UseConcMarkSweepGC -XX:CMSInitiatingOccupancyFraction=68"
+      SPRING_PROFILES_ACTIVE: prod
+      SECRET_KEY: this_is_a_simple_key
+      PING_PERIOD: 1
+      PING_SERVICE_URL: http://www.baidu.com1
+      ALERT_TAG: 1
+      WECHAT_CP_CORPID: 企业微信标识
+      WECHAT_CP_AGENTID: 企业微信应用标识
+      WECHAT_CP_CORP_SECRET: 企业微信应用密钥
+      WHITE_LIST: 172.16.13.1,127.0.0.1,0:0:0:0:0:0:0:1
 networks:
   pharos:
     driver: bridge
