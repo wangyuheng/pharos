@@ -10,7 +10,7 @@
     <packaging>jar</packaging>
 
     <name>pharos</name>
-    <description>http proxy to wechat cp</description>
+    <description>Alert with http ping proxy</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
